@@ -6,7 +6,7 @@ import TasksComponent from "./components/tasks.js";
 import TaskEditComponent from "./components/task-edit-elem";
 import NoTasksComponent from "./components/no-tasks.js";
 import LoadMoreButtonComponent from "./components/button-load-more";
-import BoardComponent from "./components/board"; // ?
+import BoardComponent from "./components/board";
 import {
   generateTasks
 } from "./mock/task";
@@ -14,9 +14,11 @@ import {
   generateFilters
 } from "./mock/site-filter";
 import {
-  render,
-  RenderPosition
+  render
 } from './utils';
+import {
+  RenderPosition
+} from './const';
 
 
 const TASK_COUNT = 22;
