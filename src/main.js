@@ -81,6 +81,7 @@ const renderBoard = (boardComponent, tasks) => {
     });
 
   const loadMoreButtonComponent = new LoadMoreButtonComponent();
+
   render(boardComponent.getElement(), loadMoreButtonComponent.getElement(), renderPosition.BEFOREEND);
 
   loadMoreButtonComponent.getElement().addEventListener(`click`, () => {
@@ -108,4 +109,5 @@ render(siteMainElement, new FilterComponent(filters).getElement(), renderPositio
 
 const boardComponent = new BoardComponent();
 render(siteMainElement, boardComponent.getElement(), renderPosition.BEFOREEND);
+
 renderBoard(boardComponent, tasks);
