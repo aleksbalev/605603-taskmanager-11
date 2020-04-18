@@ -1,5 +1,5 @@
 import {
-  RenderPosition
+  renderPosition
 } from './const';
 
 const castTimeFormat = (value) => {
@@ -22,10 +22,10 @@ export const createElement = (template) => {
 
 export const render = (container, element, place) => {
   switch (place) {
-    case RenderPosition.AFTERBEGIN:
+    case renderPosition.AFTERBEGIN:
       container.prepend(element);
       break;
-    case RenderPosition.BEFOREEND:
+    case renderPosition.BEFOREEND:
       container.append(element);
       break;
   }
