@@ -1,6 +1,5 @@
-import {
-  createElement
-} from '../utils';
+import AbstractComponent from "./abstract-component";
+
 
 const createSortingTemplate = () => {
   return `<div class="board__filter-list">
@@ -10,24 +9,8 @@ const createSortingTemplate = () => {
   </div>`;
 };
 
-export default class Sort {
-  constructor() {
-    this._element = null;
-  }
-
+export default class Sort extends AbstractComponent {
   getTemplate() {
     return createSortingTemplate();
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

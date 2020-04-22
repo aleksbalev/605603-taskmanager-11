@@ -1,6 +1,3 @@
-import {
-  createElement
-} from '../utils';
 import AbstractComponent from './abstract-component';
 
 const createBoardTemplate = () => {
