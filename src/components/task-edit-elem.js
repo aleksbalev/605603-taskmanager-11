@@ -2,10 +2,10 @@ import {
   MONTH_NAMES,
   DAYS,
   COLORS
-} from "../const";
+} from "../utils/const";
 import {
   formatTime
-} from "../utils";
+} from "../utils/common";
 import AbstractComponent from "./abstract-component";
 
 const createColorsMarkup = (colors, currentColor) => {

@@ -14,11 +14,13 @@ import {
   generateFilters
 } from "./mock/site-filter";
 import {
-  render
-} from './utils';
+  render,
+  replace,
+  remove
+} from './utils/render';
 import {
   renderPosition
-} from './const';
+} from './utils/const';
 
 
 const TASK_COUNT = 22;
@@ -27,11 +29,11 @@ const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
 
 const renderTask = (taskListElement, task) => {
   const replaceTaskToEdit = () => {
-    taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
+    replace(taskEditComponent, taskComponent);
   };
 
   const replaceEditToTask = () => {
-    taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
+    replace(taskComponent, taskEditComponent);
   };
 
   const onEscKeyDown = (evt) => {
@@ -58,19 +60,19 @@ const renderTask = (taskListElement, task) => {
     document.removeEventListener(`keydown`, onEscKeyDown);
   });
 
-  render(taskListElement, taskComponent.getElement(), renderPosition.BEFOREEND);
+  render(taskListElement, taskComponent, renderPosition.BEFOREEND);
 };
 
 const renderBoard = (boardComponent, tasks) => {
   const isAllTasksArchived = tasks.every((task) => task.isArchive);
 
   if (isAllTasksArchived) {
-    render(boardComponent.getElement(), new NoTasksComponent().getElement(), renderPosition.BEFOREEND);
+    render(boardComponent.getElement(), new NoTasksComponent(), renderPosition.BEFOREEND);
     return;
   }
 
-  render(boardComponent.getElement(), new SortComponent().getElement(), renderPosition.BEFOREEND);
-  render(boardComponent.getElement(), new TasksComponent().getElement(), renderPosition.BEFOREEND);
+  render(boardComponent.getElement(), new SortComponent(), renderPosition.BEFOREEND);
+  render(boardComponent.getElement(), new TasksComponent(), renderPosition.BEFOREEND);
 
   const taskListElement = boardComponent.getElement().querySelector(`.board__tasks`);
 
@@ -82,7 +84,7 @@ const renderBoard = (boardComponent, tasks) => {
 
   const loadMoreButtonComponent = new LoadMoreButtonComponent();
 
-  render(boardComponent.getElement(), loadMoreButtonComponent.getElement(), renderPosition.BEFOREEND);
+  render(boardComponent.getElement(), loadMoreButtonComponent, renderPosition.BEFOREEND);
 
   loadMoreButtonComponent.getElement().addEventListener(`click`, () => {
     const prevTasksCount = showingTasksCount;
@@ -92,8 +94,7 @@ const renderBoard = (boardComponent, tasks) => {
       .forEach((task) => renderTask(taskListElement, task));
 
     if (showingTasksCount >= tasks.length) {
-      loadMoreButtonComponent.getElement().remove();
-      loadMoreButtonComponent.removeElement();
+      remove(loadMoreButtonComponent);
     }
   });
 };
@@ -104,10 +105,10 @@ const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 const tasks = generateTasks(TASK_COUNT);
 const filters = generateFilters();
 
-render(siteHeaderElement, new SiteMenuComponent().getElement(), renderPosition.BEFOREEND);
-render(siteMainElement, new FilterComponent(filters).getElement(), renderPosition.BEFOREEND);
+render(siteHeaderElement, new SiteMenuComponent(), renderPosition.BEFOREEND);
+render(siteMainElement, new FilterComponent(filters), renderPosition.BEFOREEND);
 
 const boardComponent = new BoardComponent();
-render(siteMainElement, boardComponent.getElement(), renderPosition.BEFOREEND);
+render(siteMainElement, boardComponent, renderPosition.BEFOREEND);
 
 renderBoard(boardComponent, tasks);

@@ -1,6 +1,6 @@
 import {
   createElement
-} from '../utils';
+} from '../utils/render';
 
 class AbstractComponent {
   constructor() {
