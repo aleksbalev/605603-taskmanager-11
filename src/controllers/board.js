@@ -76,7 +76,7 @@ const getSortedTasks = (tasks, sortType, from, to) => {
   }
 
   return sortedTasks.slice(from, to);
-}; // ?
+};
 
 export default class BoardController {
   constructor(container) {
@@ -139,6 +139,6 @@ export default class BoardController {
       renderTasks(taskListElement, sortedTasks);
 
       renderLoadMoreButton();
-    }); // ?
+    });
   }
 }

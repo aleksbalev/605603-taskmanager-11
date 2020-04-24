@@ -37,7 +37,7 @@ export default class Sort extends AbstractComponent {
         return;
       }
 
-      const sortType = evt.target.dataset.sortType; // ?
+      const sortType = evt.target.dataset.sortType;
 
       if (this._currenSortType === sortType) {
         return;
@@ -46,6 +46,6 @@ export default class Sort extends AbstractComponent {
       this._currenSortType = sortType;
 
       handler(this._currenSortType);
-    }); // ?
+    });
   }
 }
