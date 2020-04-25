@@ -1,6 +1,6 @@
 import {
   COLORS
-} from "../const.js";
+} from "../utils/const";
 
 const DescriptionItems = [
   `Изучить теорию`,
