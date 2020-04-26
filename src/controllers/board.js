@@ -88,7 +88,6 @@ export default class BoardController {
     this._loadMoreButtonComponent = new LoadMoreButtonComponent();
   }
 
-  render(tasks) {
     const renderLoadMoreButton = () => {
       if (showingTasksCount >= tasks.length) {
         return;
