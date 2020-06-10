@@ -2,7 +2,8 @@ import TaskComponent from '../components/task-elem';
 import TaskEditComponent from '../components/task-edit-elem';
 import {
   render,
-  replace
+  replace,
+  remove,
 } from '../utils/render';
 import {
   renderPosition
@@ -61,7 +62,7 @@ export default class TaskController {
     } else {
       render(this._container, this._taskComponent, renderPosition.BEFOREEND);
     }
-  } // ?
+  }
 
   setDefaultView() {
     if (this._mode !== Mode.DEFAULT) {
@@ -69,12 +70,18 @@ export default class TaskController {
     }
   }
 
+  destroy() {
+    remove(this._taskEditComponent);
+    remove(this._taskComponent);
+    document.removeEventListener(`keydown`, this._onEscKeyDown);
+  }
+
   _replaceEditToTask() {
     document.removeEventListener(`keydown`, this._onEscKeyDown);
     this._taskEditComponent.reset();
     replace(this._taskComponent, this._taskEditComponent);
     this._mode = Mode.DEFAULT;
-  } // ?
+  }
 
   _replaceTaskToEdit() {
     this._onViewChange();
