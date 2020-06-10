@@ -10,6 +10,9 @@ import {
 } from "../utils/common";
 import AbstractSmartComponent from "./abstract-smart-component.js";
 import flatpickr from 'flatpickr';
+import {
+  encode
+} from "he";
 
 import 'flatpickr/dist/flatpickr.min.css';
 
@@ -71,8 +74,10 @@ const createTaskEditTemplate = (task, options = {}) => {
     isDateShowing,
     isRepeatingTask,
     activeRepeatingDays,
-    currentDescription: description
+    currentDescription
   } = options;
+
+  const description = encode(currentDescription);
 
 
   const isExpired = dueDate instanceof Date && isOverdueDate(dueDate, new Date());
