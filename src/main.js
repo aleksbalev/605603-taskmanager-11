@@ -2,6 +2,7 @@ import SiteMenuComponent, {
   MenuItem
 } from "./components/site-menu";
 import FilterController from "./controllers/filter";
+import StatisticsComponent from "./components/statistics.js";
 import BoardComponent from "./components/board";
 import BoardController from "./controllers/board.js";
 import TasksModel from './modules/tasks.js';
@@ -36,6 +37,20 @@ render(siteMainElement, boardComponent, renderPosition.BEFOREEND);
 
 const boardController = new BoardController(boardComponent, tasksModel);
 boardController.render();
+
+const dateTo = new Date();
+const dateFrom = (() => {
+  const d = new Date(dateTo);
+  d.setDate(d.getDate() - 7);
+  return d;
+})();
+const statisticsComponent = new StatisticsComponent({
+  tasks: tasksModel,
+  dateFrom,
+  dateTo
+});
+render(siteMainElement, statisticsComponent, renderPosition.BEFOREEND);
+statisticsComponent.hide();
 
 siteMenuComponent.setOnChange((menuItem) => {
   switch (menuItem) {
