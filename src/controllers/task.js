@@ -10,7 +10,7 @@ import {
 } from '../utils/const';
 import {
   COLOR
-} from "../const.js";
+} from "../utils/const.js";
 
 export const Mode = {
   ADDING: `adding`,

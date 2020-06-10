@@ -1,9 +1,10 @@
 import {
   getTasksByFilter
-} from '../utils/filter';
+} from "../utils/filter";
 import {
   FilterType
-} from '../utils/const';
+} from "../utils/const";
+
 
 export default class Tasks {
   constructor() {
@@ -24,7 +25,7 @@ export default class Tasks {
 
   setTasks(tasks) {
     this._tasks = Array.from(tasks);
-    this._callHandlers(this._dataChangeHandler);
+    this._callHandlers(this._dataChangeHandlers);
   }
 
   setFilter(filterType) {
@@ -55,7 +56,7 @@ export default class Tasks {
 
     this._tasks = [].concat(this._tasks.slice(0, index), task, this._tasks.slice(index + 1));
 
-    this._callHandlers(this._dataChangeHandler);
+    this._callHandlers(this._dataChangeHandlers);
 
     return true;
   }

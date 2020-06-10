@@ -1,11 +1,11 @@
 import FilterComponent from "../components/site-filter.js";
 import {
-  FilterType
+  FilterType,
+  renderPosition
 } from "../utils/const";
 import {
   render,
   replace,
-  RenderPosition
 } from "../utils/render.js";
 import {
   getTasksByFilter
@@ -43,7 +43,7 @@ export default class FilterController {
     if (oldComponent) {
       replace(this._filterComponent, oldComponent);
     } else {
-      render(container, this._filterComponent, RenderPosition.BEFOREEND);
+      render(container, this._filterComponent, renderPosition.BEFOREEND);
     }
   }
 
