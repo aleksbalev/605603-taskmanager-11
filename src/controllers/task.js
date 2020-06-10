@@ -9,11 +9,12 @@ import {
   renderPosition
 } from '../utils/const';
 
-const Mode = {
+export const Mode = {
   DEFAULT: `default`,
   EDIT: `edit`,
 };
 
+export const EmptyTask = {};
 export default class TaskController {
   constructor(container, onDataChange, onViewChange) {
     this._container = container;
