@@ -47,49 +47,30 @@ const getSortedTasks = (tasks, sortType, from, to) => {
 
 export default class BoardController {
   constructor(container, tasksModel) {
-      this._container = container;
-      this._tasksModel = tasksModel;
+    this._container = container;
+    this._tasksModel = tasksModel;
 
-      <<
-      << << < HEAD
-        ===
-        === =
-        this._tasks = []; >>>
-      >>> > 2465 ded9b64005171af30426dde60c1ee9d86f58
-      this._showedTaskControllers = [];
-      this._showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
-      this._noTasksComponent = new NoTasksComponent();
-      this._sortComponent = new SortComponent();
-      this._tasksComponent = new TasksComponent();
-      this._loadMoreButtonComponent = new LoadMoreButtonComponent();
+    this._showedTaskControllers = [];
+    this._showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
+    this._noTasksComponent = new NoTasksComponent();
+    this._sortComponent = new SortComponent();
+    this._tasksComponent = new TasksComponent();
+    this._loadMoreButtonComponent = new LoadMoreButtonComponent();
 
-      this._onDataChange = this._onDataChange.bind(this);
-      this._onSortTypeChange = this._onSortTypeChange.bind(this);
-      this._onViewChange = this._onViewChange.bind(this); <<
-      << << < HEAD
-      this._onLoadMoreButtonClick = this._onLoadMoreButtonClick.bind(this);
-      this._onFilterChange = this._onFilterChange.bind(this);
-
-      this._sortComponent.setSortTypeChangeHandler(this._onSortTypeChange);
-      this._tasksModel.setFilterChangeHandler(this._onFilterChange);
-    } ===
-    === =
+    this._onDataChange = this._onDataChange.bind(this);
+    this._onSortTypeChange = this._onSortTypeChange.bind(this);
+    this._onViewChange = this._onViewChange.bind(this);
+    this._onLoadMoreButtonClick = this._onLoadMoreButtonClick.bind(this);
+    this._onFilterChange = this._onFilterChange.bind(this);
 
     this._sortComponent.setSortTypeChangeHandler(this._onSortTypeChange);
-}
-
-render(tasks) {
-  this._tasks = tasks; >>>
-  >>> > 2465 ded9b64005171af30426dde60c1ee9d86f58
+    this._tasksModel.setFilterChangeHandler(this._onFilterChange);
+  }
 
   render() {
-    const container = this._container.getElement(); <<
-    << << < HEAD
+    const container = this._container.getElement();
     const tasks = this._tasksModel.getTasks();
-    const isAllTasksArchived = tasks.every((task) => task.isArchive); ===
-    === =
-    const isAllTasksArchived = this._tasks.every((task) => task.isArchive); >>>
-    >>> > 2465 ded9b64005171af30426dde60c1ee9d86f58
+    const isAllTasksArchived = tasks.every((task) => task.isArchive);
 
     if (isAllTasksArchived) {
       render(container, this._noTasksComponent, renderPosition.BEFOREEND);
