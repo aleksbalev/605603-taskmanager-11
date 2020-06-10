@@ -1,7 +1,7 @@
-import FilterComponent from "../components/filter.js";
+import FilterComponent from "../components/site-filter.js";
 import {
   FilterType
-} from "../const.js";
+} from "../utils/const";
 import {
   render,
   replace,

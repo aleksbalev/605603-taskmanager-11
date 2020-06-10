@@ -4,6 +4,9 @@ import {
 import {
   FilterType
 } from '../utils/const';
+import {
+  debug
+} from 'webpack';
 
 export default class Tasks {
   constructor() {

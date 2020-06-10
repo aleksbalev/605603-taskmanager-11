@@ -2,10 +2,10 @@ import {
   isRepeating,
   isOneDay,
   isOverdueDate
-} from "./common.js";
+} from "./common";
 import {
   FilterType
-} from "../const.js";
+} from "../utils/const";
 
 
 export const getArchiveTasks = (tasks) => {
