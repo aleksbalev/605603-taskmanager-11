@@ -1,6 +1,7 @@
 import {
   formatTime,
-  formatDate
+  formatDate,
+  isOverdueDate
 } from "../utils/common";
 import AbstractComponent from "./abstract-component";
 
@@ -23,7 +24,7 @@ const createTaskTemplate = (task) => {
     repeatingDays,
   } = task;
 
-  const isExpired = dueDate instanceof Date && dueDate < Date.now();
+  const isExpired = dueDate instanceof Date && isOverdueDate(dueDate, new Date());
   const isDateShowing = !!dueDate;
 
   const date = isDateShowing ? formatDate(dueDate) : ``;
