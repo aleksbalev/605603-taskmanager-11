@@ -1,5 +1,13 @@
 import Task from "./modules/task.js";
 
+const checkStatus = (response) => {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  } else {
+    throw new Error(`${response.status}: ${response.statusText}`);
+  }
+};
+
 const API = class {
   constructor(authorization) {
     this._authorization = authorization;
@@ -12,6 +20,7 @@ const API = class {
     return fetch(`https://11.ecmascript.pages.academy/task-manager/tasks`, {
       headers,
     })
+      .then(checkStatus)
       .then((response) => response.json())
       .then(Task.parseTasks);
   }
@@ -28,6 +37,7 @@ const API = class {
           headers,
         }
     )
+      .then(checkStatus)
       .then((response) => response.json())
       .then(Task.parseTasks);
   }
