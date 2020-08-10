@@ -38,7 +38,7 @@ const statisticsComponent = new StatisticsComponent({
 
 const boardComponent = new BoardComponent();
 
-const boardController = new BoardController(boardComponent, tasksModel);
+const boardController = new BoardController(boardComponent, tasksModel, api);
 const filterController = new FilterController(siteMainElement, tasksModel);
 
 render(siteHeaderElement, siteMenuComponent, renderPosition.BEFOREEND);
