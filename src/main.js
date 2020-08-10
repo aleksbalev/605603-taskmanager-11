@@ -15,6 +15,7 @@ import {
 } from "./utils/const";
 
 const AUTHORIZATION = `Basic dXNlckBwYXNzd29yZAo=`;
+const END_POINT = `https://11.ecmascript.pages.academy/task-manager`;
 
 const dateTo = new Date();
 const dateFrom = (() => {
@@ -23,7 +24,7 @@ const dateFrom = (() => {
   return d;
 })();
 
-const api = new API(AUTHORIZATION);
+const api = new API(END_POINT, AUTHORIZATION);
 const tasksModel = new TasksModel();
 
 
