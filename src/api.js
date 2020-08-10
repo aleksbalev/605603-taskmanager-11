@@ -16,6 +16,7 @@ const API = class {
   getTasks() {
     const headers = new Headers();
     headers.append(`Authorization`, this._authorization);
+    headers.append(`Content-Type`, `application/json`);
 
     return fetch(`https://11.ecmascript.pages.academy/task-manager/tasks`, {
       headers,
@@ -33,13 +34,13 @@ const API = class {
         `https://11.ecmascript.pages.academy/task-manager/tasks/${id}`,
         {
           method: `PUT`,
-          body: JSON.stringify(data),
+          body: JSON.stringify(data.toRAW()),
           headers,
         }
     )
       .then(checkStatus)
       .then((response) => response.json())
-      .then(Task.parseTasks);
+      .then(Task.parseTask);
   }
 };
 
